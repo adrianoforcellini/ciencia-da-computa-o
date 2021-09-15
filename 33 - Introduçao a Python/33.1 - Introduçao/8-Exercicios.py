@@ -22,7 +22,6 @@ print("média entre os itens de [1,2,3]:", avg([1,2,3]))
 
 def printAst(num): 
   for i in range(num):
-      for j in range(num):
-       print("*")
+       print("*" * num)
 
-printAst(2)
+printAst(6)
