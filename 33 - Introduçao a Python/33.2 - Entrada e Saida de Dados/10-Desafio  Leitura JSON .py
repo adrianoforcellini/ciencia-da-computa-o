@@ -28,8 +28,7 @@ def arrOfCategoriesPropertieInObjectsInArr(arr):
   return output
 
 arrOfObjects = arrAppendjson(jsonName)
-arrOfCategories = arrOfCategoriesPropertieInObjectsInArr(arrAppendjson(jsonName))
-# print(arrOfCategories)
+arrOfCategories = arrOfCategoriesPropertieInObjectsInArr(arrOfObjects)
 
 def arryOfRepetions(arrOfObjects, arrOfCategories):
   arr = []
@@ -52,4 +51,14 @@ def objOfCountsRepetions(arr):
             obj[i] = 1
     return obj
 
-print(objOfCountsRepetions(arr))
+objRepetion = (objOfCountsRepetions(arr))
+
+def percentualOfEachCategory(objRepetion, arrOfObjects):
+  output = []
+  all = len(arrOfObjects)
+  for i in objRepetion:
+    output.append([i, objRepetion[i]/all * 100])
+  return output
+  
+percentualOfEachCategory(objRepetion, arrOfObjects)  
+
