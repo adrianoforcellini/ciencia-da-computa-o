@@ -59,6 +59,13 @@ def percentualOfEachCategory(objRepetion, arrOfObjects):
   for i in objRepetion:
     output.append([i, objRepetion[i]/all * 100])
   return output
-  
-percentualOfEachCategory(objRepetion, arrOfObjects)  
 
+eachCategoryArr =percentualOfEachCategory(objRepetion, arrOfObjects)  
+
+def writeCSV(eachCategoryArr):
+  with open('results.csv','w') as csvfile:
+    for i in eachCategoryArr:
+      csv.writer(csvfile).writerow(i)
+
+
+writeCSV(eachCategoryArr)
