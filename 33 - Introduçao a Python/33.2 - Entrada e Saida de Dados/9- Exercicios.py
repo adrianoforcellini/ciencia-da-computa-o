@@ -1,6 +1,7 @@
 # Exercício 1: Faça um programa que receba um 
 # nome e imprima o mesmo na vertical em escada invertida
 import random
+from random import randint
 def invertScalPrint(name):
   for i in range(len(name)):
     print(name[slice(-i)])
@@ -23,9 +24,38 @@ def scrambledWordGame():
    x = (input("Scrambled word is: %s, what word is it?   " %scrambled_word))
    attempts += 1
    if attempts == 3:
-    print("Correct answer is '%s'" %word) 
+    print("Correct answer was '%s'" %word) 
    if x == word:
      print('You Win!!')
      break
 
-scrambledWordGame()
+# scrambledWordGame()
+
+# Exercício 3: Modifique o exercício anterior para que as palavras
+# sejam lidas de um arquivo. Considere que o arquivo terá cada palavra
+# em uma linha.
+
+file = open("scrambledWordGame.txt", mode="w")
+LINES = ["prismatic\n", "assiduous\n", "wonderful\n"]
+file.writelines(LINES)
+file.close()
+
+def scrambledWordGame2():
+  arr = []
+  file = open("scrambledWordGame.txt", mode="r")
+  for line in file:
+    arr.append(line.strip())
+  wordIndex = randint(0,len(arr)-1) 
+  word = arr[wordIndex]
+  scrambled_word = "".join(random.sample(word, len(word)))
+  attempts = 0
+  while (attempts < 3):
+   x = (input("Scrambled word is: %s, what word is it?   " %scrambled_word))
+   attempts += 1
+   if attempts == 3:
+    print("Correct answer was '%s'" %word) 
+   if x == word:
+     print('You Win!!')
+     break
+    
+scrambledWordGame2()
