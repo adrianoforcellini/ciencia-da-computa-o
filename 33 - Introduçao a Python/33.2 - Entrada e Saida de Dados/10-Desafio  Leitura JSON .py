@@ -5,3 +5,31 @@
 
 import json
 import csv
+
+jsonName="json.json"
+
+def arrAppendjson(jsonName):
+  arr = []
+  with open(jsonName) as file:
+   for line in file:
+    arr.append(json.loads(line))
+  return arr
+
+def arrOfCategoriesPropertieInObjectsInArr(arr):
+  categories = []
+  for i in arr:
+   if i not in categories:
+      categories.append(i['categories'])
+  output = []    
+  for j in categories:
+    for k in j:
+      if k not in output:
+        output.append(k)
+       
+  return output
+
+
+
+b = arrOfCategoriesPropertieInObjectsInArr(arrAppendjson(jsonName))
+
+print(b)
