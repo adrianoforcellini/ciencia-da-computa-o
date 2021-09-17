@@ -17,19 +17,28 @@ def arrAppendjson(jsonName):
 
 def arrOfCategoriesPropertieInObjectsInArr(arr):
   categories = []
+  output = []    
   for i in arr:
    if i not in categories:
       categories.append(i['categories'])
-  output = []    
   for j in categories:
     for k in j:
       if k not in output:
         output.append(k)
-       
   return output
 
+arrOfObjects = arrAppendjson(jsonName)
+arrOfCategories = arrOfCategoriesPropertieInObjectsInArr(arrAppendjson(jsonName))
+# print(arrOfCategories)
+
+def percentageEachCategory(arrOfObjects, arrOfCategories):
+  arr = []
+  for i in arrOfCategories:
+    for j in arrOfObjects:
+      for k in j["categories"]:
+         if k == i :
+          arr.append(k)
+  return arr 
 
 
-b = arrOfCategoriesPropertieInObjectsInArr(arrAppendjson(jsonName))
-
-print(b)
+print(percentageEachCategory(arrOfObjects, arrOfCategories))
