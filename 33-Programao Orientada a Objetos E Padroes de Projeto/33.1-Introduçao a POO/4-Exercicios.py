@@ -4,6 +4,8 @@
 
 # Exercício 2: Para exercitar nossa capacidade de abstração, vamos modelar algumas
 # partes de um software de geometria. Como poderíamos modelar um paralelepipedo retangular?
+print('-------------------------------')
+print('Paralelepípedo')
 
 class Paralelepipedo_Retangular:
     def __init__(self, A, B, C ):
@@ -22,6 +24,8 @@ class Paralelepipedo_Retangular:
 meu_bloco = Paralelepipedo_Retangular(1,2,3)
 meu_bloco.calcula_area_base()
 meu_bloco.calcula_volume()
+print('-------------------------------')
+print('Circulo')
 
 # Exercício 3: E como poderíamos definir um círculo? 
 # Qual seu nome, atributos e comportamentos?
@@ -42,6 +46,8 @@ class Circulo:
 meu_circulo = Circulo(1,3.14)
 meu_circulo.perimetro()   
 meu_circulo.area()   
+print('-------------------------------')
+print('Pedido da Mesa 1')
 
 # Exercício 4: Vamos mudar um pouco nosso contexto para um sistema de vendas de 
 # uma cafeteria. Como podemos abstrair um pedido composto por vários itens? 
@@ -90,34 +96,58 @@ print(pedido_mesa_1.calcular_total())
 # Exercício 5: Notou que os pilares da orientação a objetos começam a 
 # manifestar a medida que fizemos nossos exercícios de modelagem? Que tal
 # agora então modelarmos uma televisão?
+print('-------------------------------')
+print('Minha TV')
 
 class TV:
-  def __init__(self, modelo, cor, ligado, volume):
+  def __init__(self, modelo, cor, ligado, volume, canal):
     self.modelo = modelo
     self.cor = cor
     self.ligado = ligado
     self.volume = volume
+    self.canal = canal
 
   def ligar_desligar(self):
     self.ligado = not self.ligado
-    print(self.ligado)
+    print('Ligado = ', self.ligado)
   
   def aumentar_volume(self):
     if(self.volume < 33 and self.ligado == True):
      self.volume += 1
-     print(self.volume)
+     print('volume', self.volume)
   
   def abaixar_volume(self):
     if(self.volume > 0 and self.ligado == True):
       self.volume -= 1
-      print(self.volume)      
+      print('volume',  self.volume)      
+  
+  def aumentar_canal(self):
+    if (self.canal < 33 ):
+      self.canal += 1
+      print('canal', self.canal)
+    else:
+      self.canal = 1
+      print('canal' , self.canal)
 
-minha_tv = TV('X-35', 'Azul-Perolado', True, 32 )
+  def diminuir_canal(self):
+    if (self.canal > 1  ):
+      self.canal -= 1
+      print('canal', self.canal)
+    else:
+      self.canal = 33
+      print('canal' , self.canal)
+      
+
+
+minha_tv = TV('X-35', 'Azul-Perolado', True, 32, 32 )
 minha_tv.ligar_desligar()
 minha_tv.aumentar_volume()
 minha_tv.ligar_desligar()
 minha_tv.aumentar_volume()  
 minha_tv.abaixar_volume()  
+minha_tv.aumentar_canal()  
+minha_tv.aumentar_canal()  
+minha_tv.diminuir_canal()  
 
 
 
