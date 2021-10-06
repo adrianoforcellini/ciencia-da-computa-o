@@ -5,8 +5,7 @@ from abc import ABC, abstractmethod
 
 class SalesReport(ABC):
     def __init__(self, export_file):
-        self.export_file = export_file + '.json'
-        self.export_csv = export_file + '.csv'
+        self.export_file = export_file
 
     def build(self):
         """ Aqui colocamos a lógica para a entidade 'se criar',
@@ -30,14 +29,14 @@ class SalesReport(ABC):
 
 class SalesReportJSON(SalesReport):
     def serialize(self):
-        with open(self.export_file, 'w') as file:
+        with open(self.export_file + '.json', 'w') as file:
             json.dump(self.build(), file)
 
 
 
 class SalesReportCSV(SalesReport):
     def serialize(self):
-        with open(self.export_csv, 'w') as file:
+        with open(self.export_file + '.csv', 'w') as file:
             headers = ["Coluna 1", "Coluna 2", "Coluna 3"]
             csv_writer = DictWriter(file, headers)
             csv_writer.writeheader()
@@ -50,3 +49,7 @@ relatorio_de_vendas.serialize()
 
 relatorio_csv= SalesReportCSV('relatorio-csv')
 relatorio_csv.serialize()
+
+# Note que nunca fará sentido instanciar a classe SalesReport
+# Ela sozinha é perfeitamente inútil. É preciso criar uma especialização
+# dela. A este tipo de classe, chamamos Classe Abstrata.
